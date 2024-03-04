@@ -68,4 +68,32 @@ public class DoublyLinkedList {
         header.setNext(trailer);
     }
 
+    public Node getFirst(){
+        if(size == 0)
+            return null;
+        return header.getNext();
+    }
+
+    public Node getLast(){
+        if(size == 0)
+            return null;
+        return trailer.getPrev();
+    }
+
+    public void addFirst(String lineData){
+        // Creates a new node from the lineData and make its prevNode header and nextNode the 2nd node in list
+        Node n = new Node(header,header.getNext(),lineData);
+        // Changes the adjacent Nodes' next and prev
+        header.setNext(n);
+        header.getNext().setPrev(n);
+    }
+
+    public void addLast(String lineData){
+        // Creates a new node from the line data and make its prevNode header and nextNode the 2nd node in list
+        Node n = new Node(trailer.getPrev(),trailer,lineData);
+        // Changes the adjacent Nodes' next and prev
+        trailer.setPrev(n);
+        trailer.getPrev().setNext(n);
+    }
+
 }
