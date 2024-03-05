@@ -125,10 +125,9 @@ public class DoublyLinkedList {
         if(size == 0) return;
 
         Node walk = header.getNext();
-
         //Traverse through the list until finding specified country name
         while(walk != trailer){
-            if(walk.getCountryName().equals(countryName)){
+            if(walk.getCountryName().compareToIgnoreCase(countryName) == 0){
                 walk.getPrev().setNext(walk.getNext());
                 walk.getNext().setPrev(walk.getPrev());
                 size--;

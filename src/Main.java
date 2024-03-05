@@ -10,9 +10,20 @@ public class Main {
             dll.addFirst(sc.nextLine());
         }
     }
+
+    public void query(DoublyLinkedList dll) throws FileNotFoundException {
+        // Symbols '<', '>', '='  |||  words "print_all", "Delete", "Add"
+        File queryFile = new File("query.txt");
+        Scanner sc = new Scanner(queryFile);
+        while(sc.hasNextLine()){
+            //TODO: Detect the operation keywords here, then implement required method to complete the query
+        }
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList();
 
+        //Fills the list with the content from the input.txt
         try{
             fillTheList(dll);
         }
@@ -22,7 +33,6 @@ public class Main {
         catch (Exception e){
             System.out.println("An Exception occurred -->" +e);
         }
-
         dll.printList();
     }
 }
