@@ -1,3 +1,5 @@
+// TODO: compare population
+// TODO: adding
 public class DoublyLinkedList {
     private static class Node {
 
@@ -8,27 +10,10 @@ public class DoublyLinkedList {
         private String[] data;
         public Node(Node prev, Node next, String line){
             data = new String[6];
-
-            //TODO implement line to attributes logic
             if(line != null){
                 data = line.split("\\s+");
             }
 
-//            StringBuffer bf = new StringBuffer();
-//            int dataIndex = 0;
-//            for(int i =0; line!=null && i < line.length();i++){
-//                if(i > 0 &&  line.charAt(i-1) == ' ' &&  line.charAt(i) != ' '){
-//                    data[dataIndex] = bf.toString();
-//                    bf.delete(0,bf.length());
-//                    dataIndex++;
-//                }
-//                else if(line.charAt(i)== ' '){
-//                    continue;
-//                }
-//                else{
-//                    bf.append(line.charAt(i));
-//                }
-//            }
             this.prev = prev;
             this.next = next;
         }
@@ -80,8 +65,8 @@ public class DoublyLinkedList {
         }
     }
 
-    private Node header;
-    private Node trailer;
+    private final Node header;
+    private final Node trailer;
 
     private int size;
 
@@ -106,7 +91,6 @@ public class DoublyLinkedList {
     public void addFirst(String lineData){
         // Creates a new node from the lineData and make its prevNode header and nextNode the 2nd node in list
         Node n = new Node(header,header.getNext(),lineData);
-        // Changes the adjacent Nodes' next and prev
         header.setNext(n);
         header.getNext().setPrev(n);
         size++;
@@ -115,9 +99,8 @@ public class DoublyLinkedList {
     public void addLast(String lineData){
         // Creates a new node from the line data and make its prevNode header and nextNode the 2nd node in list
         Node n = new Node(trailer.getPrev(),trailer,lineData);
-        // Changes the adjacent Nodes' next and prev
-        trailer.setPrev(n);
         trailer.getPrev().setNext(n);
+        trailer.setPrev(n);
         size++;
     }
 
@@ -137,6 +120,60 @@ public class DoublyLinkedList {
         }
         // If we couldn't find the country, print message
         System.out.println("Country " + countryName + " is not found in the list!!!");
+    }
+
+    private void check(int attributeIndex, String symbol, String dataToCompare){
+        if(size == 0) return;
+
+        Node walk = header.getNext();
+        while(walk != trailer){
+            switch (symbol){
+                case "=":
+                    if(walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) == 0) {
+                        System.out.println(walk);
+                    }
+                    break;
+                case "<":
+                    if(walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) < 0) {
+                        System.out.println(walk);
+                    }
+                    break;
+                case ">":
+                    if(walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) > 0) {
+                        System.out.println(walk);
+                    }
+                    break;
+                default:
+                    System.out.println("Undefined symbol");
+                    break;
+            }
+            walk = walk.getNext();
+        }
+    }
+
+    public void queryControl(String attribute, String symbol, String data){
+        // 0:countryName, 1:population, 2:capitalCity, 3:largestCity, 4:language, 5:currency
+        switch (attribute){
+            case "country":
+                check(0,symbol,data);
+                break;
+            case "population":
+                check(1,symbol,data);
+                break;
+            case "capital_city":
+                check(2,symbol,data);
+                break;
+            case "largest_city":
+                check(3,symbol,data);
+                break;
+            case "language":
+                check(4,symbol,data);
+                break;
+            case "currency":
+                check(5,symbol,data);
+                break;
+        }
+
     }
 
     public void printList(){
