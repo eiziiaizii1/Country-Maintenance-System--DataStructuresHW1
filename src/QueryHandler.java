@@ -1,3 +1,5 @@
+// Aziz Önder - 22050141021
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -18,39 +20,62 @@ public class QueryHandler {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        int queryLineNum = 1;
         while(sc.hasNextLine()){
             String lineData = sc.nextLine();
             String[] words = lineData.split("\\s+");
+
             if(words[0].equals("Query")){
                 // "< > =" queries
                 if(words.length == 4){
                     if (   (words[2].equals("=") || words[2].equals("<") || words[2].equals(">")) &&
                             words[1].equals("country") || words[1].equals("population") || words[1].equals("capital_city") ||
-                            words[1].equals("largest_city") || words[1].equals("language") || words[1].equals("currency") ){
+                            words[1].equals("largest_city") || words[1].equals("official_language") || words[1].equals("currency") ){
                         check(words[1],words[2],words[3]);
+                    }
+                    else
+                    {
+                        System.out.println("UNDEFINED QUERY FORMAT!!");
                     }
                 }
                 // "print_all" query
                 else if(words.length == 2 && words[1].equals("print_all")){
                     dll.printList();
                 }
+                else
+                {
+                    System.out.println("UNDEFINED QUERY FORMAT!!");
+                }
             }
             else if (words[0].equals("Delete")) {
                 if(words.length == 2){
                     dll.deleteSpecific(words[1]);
                 }
+                else
+                {
+                    System.out.println("UNDEFINED QUERY FORMAT!!");
+                }
             }
             else if(words[0].equals("Add")){
-                // doneTODO: implement adding
                 StringBuilder wordsAfterAdd = new StringBuilder();
 
-                for(int i = 1; i < words.length; i++){
-                    wordsAfterAdd.append(words[i] + " ");
+                if(words.length == 7)
+                {
+                    for(int i = 1; i < words.length; i++){
+                        wordsAfterAdd.append(words[i]).append(" ");
+                    }
+                    if(dll.addLast(wordsAfterAdd.toString())){
+                        System.out.println("A new country has been added.");
+                    }
                 }
-                dll.addLast(wordsAfterAdd.toString());
+                else
+                {
+                    System.out.println("UNDEFINED QUERY FORMAT!!");
+                }
             }
-            System.out.println("-------------------------------------------------------");
+            System.out.println("-------------------------------------------------------" + (queryLineNum++));
         }
+        sc.close();
     }
 
 

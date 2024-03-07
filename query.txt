@@ -1,10 +1,76 @@
-Query population > 50.000.000
+Query print_all
+Query population > 100.000.000
 Query country > HUNGARY
 Query capital_city < Canakkale
 Query largest_city = Istanbul
 Query country = USA
 Add BULGARIA 6.500.000 Sofia Sofia Bulgarian LEV
+Add BULGARIA 6.500.000 Sofia Sofia Bulgarian LEV
+Delete GERMANY
+Add ITALY 58.600.850 Rome Rome Italian EUR
+Add France 68.000.529 Paris Paris French EUR
+Query currency = EUR
+Query printall
+Query print_all
+Query currency < TRY
+Query population > 2.185.0503.191
+Query official_language > KuRdIsh
+Querycurrency < YEN
+Query currency < YEN
+Query capital_city < Yemen
+Add Gojo540.000 Nah Idwin Jajanken YRK
+Delete Subayya
+Add Roshar 100.000.000 Thaylen Alethkar Vorin
+Add Arrakis Tabr Arrakeen Leto
+Delete Roshar
+Query official_language = ITALIAN
+Query currency < YRK
+Query capital_city > KastamOnU
+Queryprint_all
+Add China 1.500.000.000 Beijing Shanghai Mandarin YUAN
+Add India 1.427.000.000 NewDelhi NewDelhi Indian INR
+Country population < China
+Delete India
+Add India 1.427.000.000 NewDelhi NewDelhi Indian INR
+Add India 1.427.000.000 NewDelhi OldDelhi Indian INR
+Add Fantasia 3.000.000.000.000 Winland Sivas Idlose
+Delete Fantasia
+Add Negus100.000NeguriaNeguria Somethingidk SUCKMY
+Query capitalcity >= Shanghai
+Query largest_city <= Beijing
+Delete Negus
+AddNegus
+Add Subayya 500.000.000 Albayya Yarbayya General RANK
+Query print_all
+Query capital_city = Albayya
+Delete France
+Add Subayya 500.000.000 Albayya Yarbayya General RANK
+Query capital_city = Subayya
+Add Roshar 100.000.000 Thaylen Vorin
+Delete Roshar
+Add USA 350.000.000
+Add Roshar Thaylen Vorin
 Delete USA
 Query print_all
-Query currency < EUR
+Add Youdwin 400.000 Suck On Deez NUTS
 Query print_all
+Query population > 1
+Query print_all
+Query country = Turkey
+Query population <= 3.000.000.000
+Query population < 3.000.000.000
+Query capital_city > KingsLanding
+Query capital_city < Zorro
+Query currency < 69420
+Query currency > 0
+Query country = Fanta Sia
+Queryofficial_language < Cin
+Query official_language > Cin
+Query Add India 1.427.000.000 New Delhi New Delhi Indian INR
+Query Delete India
+Query largest_city < Metropolis
+Querry Add A
+
+
+
+
