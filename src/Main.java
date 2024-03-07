@@ -34,9 +34,17 @@ public class Main {
             }
             else if (words[0].equals("Delete")) {
                 if(words.length == 2){
-                    //TODO: Check all list to find words[1], then delete it
                     dll.deleteSpecific(words[1]);
                 }
+            }
+            else if(words[0].equals("Add")){
+                // TODO: implement adding
+                StringBuilder wordsAfterAdd = new StringBuilder();
+
+                for(int i = 1; i < words.length; i++){
+                    wordsAfterAdd.append(words[i] + " ");
+                }
+                dll.addLast(wordsAfterAdd.toString());
             }
             System.out.println("-------------------------------------------------------");
         }

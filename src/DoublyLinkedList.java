@@ -1,5 +1,6 @@
 // TODO: compare population
-// TODO: adding
+// doneTODO: adding
+// doneTODO: make list unique
 public class DoublyLinkedList {
     private static class Node {
 
@@ -75,18 +76,7 @@ public class DoublyLinkedList {
         trailer = new Node(header, null, null);
         header.setNext(trailer);
     }
-
-    public Node getFirst(){
-        if(size == 0)
-            return null;
-        return header.getNext();
-    }
-
-    public Node getLast(){
-        if(size == 0)
-            return null;
-        return trailer.getPrev();
-    }
+    
 
     public void addFirst(String lineData){
         // Creates a new node from the lineData and make its prevNode header and nextNode the 2nd node in list
@@ -99,6 +89,21 @@ public class DoublyLinkedList {
     public void addLast(String lineData){
         // Creates a new node from the line data and make its prevNode header and nextNode the 2nd node in list
         Node n = new Node(trailer.getPrev(),trailer,lineData);
+
+        Node walk = header.getNext();
+        while(walk != trailer){
+            if(n.getCountryName().compareToIgnoreCase(walk.getCountryName()) == 0){
+                System.out.println("There exists a country named " + n.getCountryName() +". You can't add this country!!!" );
+            }
+            else if(n.getCapitalCity().compareToIgnoreCase(walk.getCapitalCity()) == 0){
+                System.out.println("There exists a country whose capital is " + n.getCapitalCity() +". You can't add this country!!!" );
+            }
+            else if(n.getLargestCity().compareToIgnoreCase(walk.getLargestCity()) == 0){
+                System.out.println("There exists a whose largest city is " + n.getLargestCity() +". You can't add this country!!!" );
+            }
+
+            walk = walk.getNext();
+        }
         trailer.getPrev().setNext(n);
         trailer.setPrev(n);
         size++;
@@ -166,12 +171,14 @@ public class DoublyLinkedList {
             case "largest_city":
                 check(3,symbol,data);
                 break;
-            case "language":
+            case "official_language":
                 check(4,symbol,data);
                 break;
             case "currency":
                 check(5,symbol,data);
                 break;
+            default:
+                System.out.println(attribute + " is not defined!!!");
         }
 
     }
