@@ -130,24 +130,6 @@ public class DoublyLinkedList {
         System.out.println("Country " + countryName + " is not found in the list!!!");
     }
 
-//    public boolean checkCountryName(String symbol, String countryToCompare){
-//        boolean isFound = false;
-//
-//        Node walk = header.getNext();
-//        while(walk != trailer){
-//            if(symbol.equals("=") && ){
-//
-//            }
-//            else if () {
-//
-//            }
-//            else if () {
-//
-//            }
-//            walk = walk.getNext();
-//        }
-//    }
-
     public void checkAttribute(int attributeIndex, String symbol, String dataToCompare){
         if(size == 0) return;
 
@@ -159,8 +141,8 @@ public class DoublyLinkedList {
                         System.out.println(walk);
                     }
                     else if(attributeIndex == 1){
-                        Long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
-                        Long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
+                        long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
+                        long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
                         System.out.println(walkPopulation == populationToCompare ? walk : "");
                     }
                     break;
@@ -169,8 +151,8 @@ public class DoublyLinkedList {
                         System.out.println(walk);
                     }
                     else if(attributeIndex == 1){
-                        Long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
-                        Long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
+                        long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
+                        long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
                         System.out.println(walkPopulation < populationToCompare ? walk : "");
                     }
                     break;
@@ -179,8 +161,8 @@ public class DoublyLinkedList {
                         System.out.println(walk);
                     }
                     else if(attributeIndex == 1){
-                        Long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
-                        Long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
+                        long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
+                        long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
                         System.out.println(walkPopulation > populationToCompare ? walk : "");
                     }
                     break;
@@ -191,33 +173,6 @@ public class DoublyLinkedList {
             walk = walk.getNext();
         }
     }
-
-//    public void queryControl(String attribute, String symbol, String data){
-//        // 0:countryName, 1:population, 2:capitalCity, 3:largestCity, 4:language, 5:currency
-//        switch (attribute){
-//            case "country":
-//                check(0,symbol,data);
-//                break;
-//            case "population":
-//                check(1,symbol,data);
-//                break;
-//            case "capital_city":
-//                check(2,symbol,data);
-//                break;
-//            case "largest_city":
-//                check(3,symbol,data);
-//                break;
-//            case "official_language":
-//                check(4,symbol,data);
-//                break;
-//            case "currency":
-//                check(5,symbol,data);
-//                break;
-//            default:
-//                System.out.println(attribute + " is not defined!!!");
-//        }
-//
-//    }
 
     public void printList(){
         if(size == 0) return;

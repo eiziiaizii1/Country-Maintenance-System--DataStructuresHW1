@@ -3,8 +3,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class QueryHandler {
-    private DoublyLinkedList dll;
-    private File queryFile;
+    final private DoublyLinkedList dll;
+    final private File queryFile;
 
     public QueryHandler(DoublyLinkedList doublyLinkedList, String queryPath){
         dll = doublyLinkedList;
@@ -41,7 +41,7 @@ public class QueryHandler {
                 }
             }
             else if(words[0].equals("Add")){
-                // TODO: implement adding
+                // doneTODO: implement adding
                 StringBuilder wordsAfterAdd = new StringBuilder();
 
                 for(int i = 1; i < words.length; i++){
