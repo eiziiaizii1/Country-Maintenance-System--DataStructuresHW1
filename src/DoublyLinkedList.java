@@ -89,11 +89,13 @@ public class DoublyLinkedList {
         // Creates a new node from the line data and make its prevNode header and nextNode the 2nd node in list
         Node n = new Node(trailer.getPrev(),trailer,lineData);
 
-        // Makes sure that population is number
+        // Makes sure that population is a positive number
         try {
-            Integer.parseInt(n.getPopulation().replace(".",""));
+            if(Long.parseUnsignedLong(n.getPopulation().replace(".",""))<0){
+                return false;
+            }
         } catch (NumberFormatException e) {
-            System.out.println("Population must be a number!!!");
+            System.out.println("Population must be positive long number!!!");
             return false;
         }
 
@@ -146,58 +148,67 @@ public class DoublyLinkedList {
         System.out.println("Country " + countryName + " is not found in the list!!!");
     }
 
-    public void checkAttribute(int attributeIndex, String symbol, String dataToCompare){
-        if(size == 0) return;
+    public void checkAttribute(int attributeIndex, String symbol, String dataToCompare) {
+        if (size == 0) return;
 
-        // Iterates through the list, compares data based on the provided symbol, prints the matching node
         Node walk = header.getNext();
         int index = 1;
-        while(walk != trailer){
-            switch (symbol){
+
+        // Iterates through the list, compares data based on the provided symbol, prints the matching node
+        boolean isSymbolDefined = true;
+        while (walk != trailer && isSymbolDefined) {
+            switch (symbol) {
                 case "=":
-                        if(attributeIndex != 1 && walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) == 0) {
-                            System.out.println(index++ + ". " + walk);
-                        }
-                        else if(attributeIndex == 1){
-                            long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
-                            long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
-                            System.out.print((walkPopulation == populationToCompare ? (index++ + ". " + walk + "\n") : ""));
-                        }
-                        break;
+                    if (attributeIndex != 1 && walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) == 0) {
+                        System.out.println(index++ + ". " + walk);
+                    } else if (attributeIndex == 1) {
+                        long populationToCompare = Long.parseLong(dataToCompare.replace(".", ""));
+                        long walkPopulation = Long.parseLong(walk.getPopulation().replace(".", ""));
+                        System.out.print((walkPopulation == populationToCompare ? (index++ + ". " + walk + "\n") : ""));
+                    }
+                    break;
                 case "<":
-                        if(attributeIndex != 1 && walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) < 0) {
-                            System.out.println(index++ + ". " + walk);
-                        }
-                        else if(attributeIndex == 1){
-                            long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
-                            long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
-                            System.out.print(walkPopulation < populationToCompare ? (index++ + ". " + walk + "\n") : "");
-                        }
-                        break;
+                    if (attributeIndex != 1 && walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) < 0) {
+                        System.out.println(index++ + ". " + walk);
+                    } else if (attributeIndex == 1) {
+                        long populationToCompare = Long.parseLong(dataToCompare.replace(".", ""));
+                        long walkPopulation = Long.parseLong(walk.getPopulation().replace(".", ""));
+                        System.out.print(walkPopulation < populationToCompare ? (index++ + ". " + walk + "\n") : "");
+                    }
+                    break;
                 case ">":
-                        if(attributeIndex != 1 && walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) > 0) {
-                            System.out.println(index++ + ". " + walk);
-                        }
-                        else if(attributeIndex == 1){
-                            long populationToCompare = Long.parseLong(dataToCompare.replace(".",""));
-                            long walkPopulation = Long.parseLong(walk.getPopulation().replace(".",""));
-                            System.out.print(walkPopulation > populationToCompare ? (index++ + ". " + walk + "\n") : "");
-                        }
-                        break;
+                    if (attributeIndex != 1 && walk.data[attributeIndex].compareToIgnoreCase(dataToCompare) > 0) {
+                        System.out.println(index++ + ". " + walk);
+                    } else if (attributeIndex == 1) {
+                        long populationToCompare = Long.parseLong(dataToCompare.replace(".", ""));
+                        long walkPopulation = Long.parseLong(walk.getPopulation().replace(".", ""));
+                        System.out.print(walkPopulation > populationToCompare ? (index++ + ". " + walk + "\n") : "");
+                    }
+                    break;
                 default:
+                    isSymbolDefined = false;
                     System.out.println("Undefined symbol");
                     break;
             }
             walk = walk.getNext();
         }
+        // Index holds the numbers of specified countries, so when it is incremented it means that we have found at least 1 country
+        if (index <= 1 && isSymbolDefined){
+            System.out.println("There is no country with the specified feature in the list");
+        }
     }
+
+//    private boolean comparePopulation(Node walk, String dataToCompare){
+//
+//    }
 
     public void printList(){
         if(size == 0) return;
 
         Node walk = header.getNext();
+        int lineNum = 1;
         while(walk != trailer){
-            System.out.println(walk);
+            System.out.print(lineNum++ + ") " + walk + '\n');
             walk = walk.getNext();
         }
     }

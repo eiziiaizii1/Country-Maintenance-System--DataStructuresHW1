@@ -10,12 +10,18 @@ public class Main {
         File txtFile = new File("input.txt");
         Scanner sc = new Scanner(txtFile);
         while(sc.hasNextLine()){
-            String line = sc.nextLine();
-            // Bypasses the blank lines in input file
-            if(line.isBlank()){
-               continue;
+            String inputLine = sc.nextLine().trim();
+            String[] words = inputLine.split("\\s+");
+
+            // Bypasses the blank and undefined lines in input file
+            if(words.length != 6){
+                if(inputLine.isBlank()){
+                    continue;
+                }
+                System.out.println("Undefined input format. Skipping this line.");
+                continue;
             }
-            dll.addLast(line);
+            dll.addLast(inputLine);
         }
         sc.close();
     }
@@ -37,7 +43,10 @@ public class Main {
 
         try {
             queryHandler.handleQueries();
-        }catch (Exception e){
+        }catch (NumberFormatException nfe){
+            System.out.println("Population must be positive long number --> " + nfe);
+        }
+        catch (Exception e){
             System.out.println("Unexpected problem has occurred --> " + e);
         }
 
