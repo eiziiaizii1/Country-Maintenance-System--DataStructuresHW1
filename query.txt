@@ -1,8 +1,19 @@
-Query print_all
-                  Query population > 100.000.000
-Query country > HUNGARY
-Query capital_city < Canakkale
-Query largest_city = Istanbul
-Query country = USA
-Add BULGARIA 6.500.000 Sofia Sofia Bulgarian LEV
-Query population > 100.000.000.999.999.999.999.999.999
+invalid text
+delete UsA
+delete GeRMANY
+delete TuRKIYE
+ delete FRANCE
+ delete INDIA
+QUERY priNt_aLL
+QueRy delEte NONEXISTENT
+Query populaTion > 50.000.000
+QUERY COUnTRY > HUNGARY
+query CAPItaL_CITY < CAnakKale
+QueRy largest_citY = Istanbul
+Query cOunTry = USA
+Add BUlGARIA 6.500.000 Sofia Sofia Bulgarian LEV
+ADD CAnADA 37.000.000 Ottawa Ottawa English CAD
+ADd FRaNCE 67.000.000 Paris Paris French EUR
+add INDIA 100000000 NewDelhi NewDelhi Hindi INR
+Query priNt_all
+Query currency < ANAN

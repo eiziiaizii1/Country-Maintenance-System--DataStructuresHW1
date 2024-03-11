@@ -44,7 +44,7 @@ public class Main {
         try {
             queryHandler.handleQueries();
         }catch (NumberFormatException nfe){
-            System.out.println("Population must be positive long number --> " + nfe);
+            System.out.println("The population value needs to be represented with the positive long data type!!!\n --> " + nfe);
         }
         catch (Exception e){
             System.out.println("Unexpected problem has occurred --> " + e);

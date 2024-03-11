@@ -91,11 +91,12 @@ public class DoublyLinkedList {
 
         // Makes sure that population is a positive number
         try {
-            if(Long.parseUnsignedLong(n.getPopulation().replace(".",""))<0){
+            if(Long.parseLong(n.getPopulation().replace(".",""))<0){
+                System.out.println("Population can't be negative!!!");
                 return false;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Population must be positive long number!!!");
+            System.out.println("The population value needs to be represented with the positive long data type!!!");
             return false;
         }
 
@@ -197,10 +198,6 @@ public class DoublyLinkedList {
             System.out.println("There is no country with the specified feature in the list");
         }
     }
-
-//    private boolean comparePopulation(Node walk, String dataToCompare){
-//
-//    }
 
     public void printList(){
         if(size == 0) return;
